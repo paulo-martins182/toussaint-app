@@ -37,4 +37,8 @@ feat(hero): adiciona narrativa visual da abertura
 
 O histórico da versão `0.1.0` foi criado com a sequência `main` → `develop` → `feature/docs-git-flow` → `release/0.1.0` → `main`.
 
+## Histórico de integração
+
+A branch `feature/docs-git-flow` documenta as convenções de branches e commits. Em seguida, `develop` recebe a integração da documentação, `release/0.1.0` estabiliza a primeira versão e `main` recebe a versão publicada com a tag `v0.1.0`.
+
 [0.1.0]: https://github.com/toussaint/toussaint/releases/tag/v0.1.0
