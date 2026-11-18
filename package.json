@@ -1,0 +1,23 @@
+{
+  "name": "toussaint",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@10.9.9",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0 --port 3000 --strictPort",
+    "build": "astro check && astro build",
+    "preview": "astro preview --host 0.0.0.0 --port 3000 --strictPort",
+    "check": "astro check"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "@tailwindcss/vite": "latest",
+    "astro": "latest",
+    "tailwindcss": "latest",
+    "three": "latest",
+    "typescript": "latest",
+    "@types/three": "^0.187.0"
+  }
+}

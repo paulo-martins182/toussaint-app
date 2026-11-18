@@ -1,0 +1,61 @@
+<div class="orb-stage" data-orb-stage>
+  <div class="orb-fallback" aria-hidden="true">
+    <span class="orb-fallback__ring orb-fallback__ring--outer"></span>
+    <span class="orb-fallback__ring orb-fallback__ring--inner"></span>
+    <span class="orb-fallback__core"></span>
+  </div>
+  <canvas
+    class="orb-canvas"
+    data-orb-canvas
+    width="720"
+    height="720"
+    role="img"
+    aria-label="Objeto orbital abstrato em tons de ferrugem e marfim"
+  ></canvas>
+  <span class="orb-coordinate orb-coordinate--top" aria-hidden="true">43° 18' 06" N</span>
+  <span class="orb-coordinate orb-coordinate--bottom" aria-hidden="true">06 / 11 / 23</span>
+  <span class="orb-stage__status" data-orb-status>SCENE / STANDBY</span>
+</div>
+
+<script>
+  const canvas = document.querySelector<HTMLCanvasElement>("[data-orb-canvas]");
+  const stage = document.querySelector<HTMLElement>("[data-orb-stage]");
+  const status = document.querySelector<HTMLElement>("[data-orb-status]");
+
+  if (canvas && stage) {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const isWebGLAvailable = (() => {
+      try {
+        return Boolean(document.createElement("canvas").getContext("webgl"));
+      } catch {
+        return false;
+      }
+    })();
+
+    if (mediaQuery.matches || !isWebGLAvailable) {
+      stage.dataset.scene = "fallback";
+      if (status) status.textContent = mediaQuery.matches ? "SCENE / STILL" : "SCENE / FALLBACK";
+    } else {
+      const loadScene = async () => {
+        stage.dataset.scene = "loading";
+        const { initOrbScene } = await import("../scripts/orb-scene");
+        initOrbScene(canvas, stage, status);
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            observer.disconnect();
+            const requestIdle = (window as Window & {
+              requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number;
+            }).requestIdleCallback;
+            if (requestIdle) requestIdle(loadScene, { timeout: 1800 });
+            else window.setTimeout(loadScene, 480);
+          }
+        },
+        { rootMargin: "240px" },
+      );
+      observer.observe(stage);
+    }
+  }
+</script>

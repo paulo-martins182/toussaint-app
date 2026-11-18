@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0b0c0e"/>
+  <circle cx="870" cy="270" r="175" fill="none" stroke="#e8673f" stroke-opacity=".32"/>
+  <circle cx="870" cy="270" r="112" fill="#1d1714" stroke="#e8673f" stroke-width="1"/>
+  <circle cx="870" cy="270" r="54" fill="#e8673f" fill-opacity=".2"/>
+  <path d="M0 520H1200" stroke="#e7dcc5" stroke-opacity=".16"/>
+  <text x="80" y="150" fill="#e8673f" font-family="monospace" font-size="18" letter-spacing="4">LANCEMENT NOCTURNE / 006</text>
+  <text x="80" y="340" fill="#e7dcc5" font-family="Georgia, serif" font-size="150">Toussaint</text>
+  <text x="82" y="475" fill="#a49b8c" font-family="monospace" font-size="18" letter-spacing="3">A NOITE SE REVELA.</text>
+</svg>
